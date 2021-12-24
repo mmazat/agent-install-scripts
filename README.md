@@ -7,11 +7,11 @@ https://www.ispyconnect.com/download.aspx
 
 To install on **macOS** (Requires: macOS >= 10.14) or **Linux** (x64, arm and raspberry pi) open a terminal and call:
 
-    bash <(curl -s "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/main/install.sh")
+    bash <(curl -s "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/install.sh")
 
 To download the latest Agent DVR zip file for your platform:
 
-    bash <(curl -s "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/main/download.sh")
+    bash <(curl -s "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/download.sh")
 
 You may need to install curl first:
 

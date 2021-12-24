@@ -78,7 +78,7 @@ then
 		read -p "Enter your username [$(whoami)]: " name
 		name=${name:-$(whoami)}
 		cd $ABSOLUTE_PATH/
-		curl --show-error --location "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/main/com.ispy.agent.dvr.plist" -o "com.ispy.agent.dvr.plist"
+		curl --show-error --location "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/com.ispy.agent.dvr.plist" -o "com.ispy.agent.dvr.plist"
 		sed -i '' "s|AGENT_LOCATION|${ABSOLUTE_PATH}/AgentDVR|" com.ispy.agent.dvr.plist
 		sed -i '' "s|YOUR_USERNAME|${name}|" com.ispy.agent.dvr.plist
 		echo "Creating service config"
