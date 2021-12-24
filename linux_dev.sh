@@ -35,7 +35,7 @@ FILE=$ABSOLUTE_PATH/start_agent.sh
 if [ ! -f $FILE ]
 then
 	echo "downloading start script"
-	curl --show-error --location "https://raw.githubusercontent.com/ispysoftware/agent-install-scripts/main/start_agent.sh" -o "start_agent.sh"
+	curl --show-error --location "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/main/start_agent.sh" -o "start_agent.sh"
 	chmod a+x ./start_agent.sh
 fi
 
@@ -105,7 +105,7 @@ then
 		echo Yes
 		mkdir ffmpeg-build
 		cd ffmpeg-build
-		curl -s -L "https://raw.githubusercontent.com/ispysoftware/agent-install-scripts/main/ffmpeg_build.sh" | bash -s -- --build --enable-gpl-and-non-free
+		curl -s -L "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/main/ffmpeg_build.sh" | bash -s -- --build --enable-gpl-and-non-free
 	fi
 else
 	echo "Found ffmpeg"
@@ -122,7 +122,7 @@ then
 		echo Yes
 		echo "Installing service as [$(whoami)]"
 		name=$(whoami)
-		curl --show-error --location "https://raw.githubusercontent.com/ispysoftware/agent-install-scripts/main/AgentDVR.service" -o "AgentDVR.service"
+		curl --show-error --location "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/main/AgentDVR.service" -o "AgentDVR.service"
 		sed -i "s|AGENT_LOCATION|$ABSOLUTE_PATH|" AgentDVR.service
 		sed -i "s|YOUR_USERNAME|$name|" AgentDVR.service
 		sudo chmod 644 ./AgentDVR.service
