@@ -390,8 +390,8 @@ fi
 
 #disabling cmake build from source, it takes a lot of time
 #on rasperrypi, instead 
-#if build "cmake" "3.22.0"; then
-if 0; then
+if false && build "cmake" "3.22.0"; then
+
   download "https://github.com/Kitware/CMake/releases/download/v3.22.0/cmake-3.22.0.tar.gz"
   execute ./configure --prefix="${WORKSPACE}" --parallel="${MJOBS}" -- -DCMAKE_USE_OPENSSL=OFF
   execute make -j $MJOBS
@@ -475,9 +475,8 @@ if $NONFREE_AND_GPL; then
 fi
 
 if $NONFREE_AND_GPL; then
-  #if build "x265" "3.5"; then
-  #x265 a lot of hassle building it on rasperrypi, ignore it for now
-  if 0; then
+#x265 a lot of hassle building it on rasperrypi, ignore it for now
+  if false && build "x265" "3.5"; then  
     download "https://github.com/videolan/x265/archive/Release_3.5.tar.gz" "x265-3.5.tar.gz" # This is actually 3.4 if looking at x265Version.txt
     cd build/linux || exit
     rm -rf 8bit 10bit 12bit 2>/dev/null
