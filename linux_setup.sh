@@ -123,7 +123,7 @@ then
 		echo Yes
 		mkdir ffmpeg-build
 		cd ffmpeg-build
-		curl -s -L "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/main/ffmpeg_build.sh" | bash -s -- --build --enable-gpl-and-non-free
+		curl -s -L "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/ffmpeg_build.sh" | bash -s -- --build --enable-gpl-and-non-free
 	fi
 else
 	echo "Found ffmpeg"
@@ -140,7 +140,7 @@ then
 		echo Yes
 		echo "Installing service as [$(whoami)]"
 		name=$(whoami)
-		curl --show-error --location "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/main/AgentDVR.service" -o "AgentDVR.service"
+		curl --show-error --location "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/AgentDVR.service" -o "AgentDVR.service"
 		sed -i "s|AGENT_LOCATION|$ABSOLUTE_PATH|" AgentDVR.service
 		sed -i "s|YOUR_USERNAME|$name|" AgentDVR.service
 		sudo chmod 644 ./AgentDVR.service
