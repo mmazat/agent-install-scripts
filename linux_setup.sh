@@ -23,10 +23,10 @@ machine_has() {
 echo "installing build tools"
 if machine_has "apt-get"; then
 	sudo apt-get update \
-		&& sudo apt-get install -y unzip python3 curl make g++ build-essential libvlc-dev vlc libx11-dev libtbb-dev libc6-dev gss-ntlmssp libusb-1.0-0-dev apt-transport-https
+		&& sudo apt-get install -y unzip python3 curl make g++ build-essential libvlc-dev vlc libx11-dev libtbb-dev libc6-dev gss-ntlmssp libusb-1.0-0-dev apt-transport-https libxext-dev
 else
 	sudo yum update \
-		&& sudo yum install -y autoconf automake bzip2 bzip2-devel cmake freetype-devel gcc gcc-c++ git libtool make pkgconfig zlib-devel libvlc-dev vlc libx11-dev
+		&& sudo yum install -y autoconf automake bzip2 bzip2-devel cmake freetype-devel gcc gcc-c++ git libtool make pkgconfig zlib-devel libvlc-dev vlc libx11-dev libxext-dev
 fi
 
 
@@ -35,7 +35,7 @@ FILE=$ABSOLUTE_PATH/start_agent.sh
 if [ ! -f $FILE ]
 then
 	echo "downloading start script"
-	curl --show-error --location "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/start_agent.sh" -o "start_agent.sh"
+	curl --show-error --location "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/main/start_agent.sh" -o "start_agent.sh"
 	chmod a+x ./start_agent.sh
 fi
 
@@ -111,7 +111,7 @@ then
 		echo Yes
 		mkdir ffmpeg-build
 		cd ffmpeg-build
-		curl -s -L "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/ffmpeg_build.sh" | bash -s -- --build --enable-gpl-and-non-free
+		curl -s -L "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/main/ffmpeg_build.sh" | bash -s -- --build --enable-gpl-and-non-free
 	fi
 else
 	echo "Found ffmpeg"
@@ -128,7 +128,7 @@ then
 		echo Yes
 		echo "Installing service as [$(whoami)]"
 		name=$(whoami)
-		curl --show-error --location "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/AgentDVR.service" -o "AgentDVR.service"
+		curl --show-error --location "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/main/AgentDVR.service" -o "AgentDVR.service"
 		sed -i "s|AGENT_LOCATION|$ABSOLUTE_PATH|" AgentDVR.service
 		sed -i "s|YOUR_USERNAME|$name|" AgentDVR.service
 		sudo chmod 644 ./AgentDVR.service
