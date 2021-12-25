@@ -35,7 +35,7 @@ FILE=$ABSOLUTE_PATH/start_agent.sh
 if [ ! -f $FILE ]
 then
 	echo "downloading start script"
-	curl --show-error --location "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/main/start_agent.sh" -o "start_agent.sh"
+	curl --show-error --location "https://raw.githubusercontent.com/mmazat/agent-install-scripts/pi_3/start_agent.sh" -o "start_agent.sh"
 	chmod a+x ./start_agent.sh
 fi
 
