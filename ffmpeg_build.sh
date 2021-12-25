@@ -703,13 +703,13 @@ fi
 ## other library
 ##
 
-if build "libsdl" "2.0.14"; then
-  download "https://www.libsdl.org/release/SDL2-2.0.14.tar.gz"
+if build "libsdl" "2.0.18"; then
+  download "https://www.libsdl.org/release/SDL2-2.0.18.tar.gz"
   execute ./configure --prefix="${WORKSPACE}" --enable-shared --disable-static
   execute make -j $MJOBS
   execute make install
 
-  build_done "libsdl" "2.0.14"
+  build_done "libsdl" "2.0.18"
 fi
 
 ##
