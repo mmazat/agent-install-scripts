@@ -474,9 +474,10 @@ if $NONFREE_AND_GPL; then
   CONFIGURE_OPTIONS+=("--enable-libx264")
 fi
 
-if $NONFREE_AND_GPL; then
 #x265 a lot of hassle building it on rasperrypi, ignore it for now
-  if false && build "x265" "3.5"; then  
+if false && $NONFREE_AND_GPL; then
+
+  if build "x265" "3.5"; then  
     download "https://github.com/videolan/x265/archive/Release_3.5.tar.gz" "x265-3.5.tar.gz" # This is actually 3.4 if looking at x265Version.txt
     cd build/linux || exit
     rm -rf 8bit 10bit 12bit 2>/dev/null
@@ -773,22 +774,23 @@ echo "cflags: ${CFLAGS}"
 
 # shellcheck disable=SC2086
 ./configure "${CONFIGURE_OPTIONS[@]}" \
+  --arch=arm7l \
   --disable-debug \
   --disable-doc \
   --enable-shared \
   --enable-pthreads \
   --enable-small \
   --enable-version3 \
-  --extra-cflags="-fPIC -m64 ${CFLAGS}" \
+  --extra-cflags="-fPIC ${CFLAGS}" \
   --extra-ldexeflags="${LDEXEFLAGS}" \
   --extra-ldflags="${LDFLAGS}" \
-  --extra-libs="${EXTRALIBS}" \
+  --extra-libs="-lpthread -lm -latomic ${EXTRALIBS}" \
   --pkgconfigdir="$WORKSPACE/lib/pkgconfig" \
   --pkg-config-flags="--static" \
   --prefix="${WORKSPACE}" \
   --extra-version="${EXTRA_VERSION}"
 
-execute make -j $MJOBS
+execute make -j $MJOBS   
 execute make install
 
 verify_binary_type
