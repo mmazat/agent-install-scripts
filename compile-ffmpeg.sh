@@ -59,7 +59,8 @@ sudo apt-get -y install \
     texinfo \
     wget \
     yasm \
-    zlib1g-dev
+    zlib1g-dev \
+    libatlas-base-dev
 
 mkdir ~/ffmpeg-libraries
 
